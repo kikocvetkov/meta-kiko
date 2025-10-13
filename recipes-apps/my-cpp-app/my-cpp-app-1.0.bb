@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 
 SRC_URI = " \
     file://CMakeLists.txt \
-    file://my-cpp-app.cpp \
+    file://main.cpp \
     file://my-cpp-app.service \
     file://my-cpp-app.conf \
 "
