@@ -10,7 +10,7 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED libsystemd)
 
 # Add executable
-add_executable(my-cpp-app my-cpp-app.cpp)
+add_executable(my-cpp-app main.cpp)
 
 # Include directories
 include_directories(${SYSTEMD_INCLUDE_DIRS})
