@@ -1,0 +1,15 @@
+[Unit]
+Description=My C++ Application
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/my-cpp-app
+Restart=always
+RestartSec=5
+WatchdogSec=30
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
+
