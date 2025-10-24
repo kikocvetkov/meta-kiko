@@ -14,6 +14,8 @@ SRC_URI = " \
 
 DEPENDS = "systemd"
 
+S="${WORKDIR}"
+
 inherit cmake pkgconfig systemd
 
 SYSTEMD_SERVICE:${PN} = "my-cpp-app.service \"
