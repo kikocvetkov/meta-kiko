@@ -3,7 +3,9 @@ DESCRIPTION = "A custom C++ application built with CMake and systemd integration
 LICENSE = "CLOSED"
 
 SRC_URI = " \
-    file://* \
+    file://CMakeLists.txt \
+    file://main.cpp \
+    file://my-cpp-app.service \
 "
 
 DEPENDS = "systemd"
@@ -21,23 +23,15 @@ do_install:append() {
     # Install systemd service file
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${S}/my-cpp-app.service ${D}${systemd_system_unitdir}/my-cpp-app.service
-    
-    # Install configuration file
-    install -d ${D}${sysconfdir}/my-cpp-app
-    install -m 0644 ${S}/my-cpp-app.conf ${D}${sysconfdir}/my-cpp-app/
-
-    # Create log directory (optional - systemd usually handles this)
-    install -d ${D}${localstatedir}/log/my-cpp-app
 }
 
 FILES:${PN} += " \
     ${bindir} \
     ${systemd_system_unitdir} \
     ${sysconfdir} \
-    ${localstatedir} \
 "
 
 # Dependencies for the application
 RDEPENDS:${PN} += " \
-systemd \
+    systemd \
 "
