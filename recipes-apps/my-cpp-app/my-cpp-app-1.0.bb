@@ -3,29 +3,30 @@ DESCRIPTION = "A custom C++ application built with CMake and systemd integration
 LICENSE = "CLOSED"
 
 SRC_URI = " \
-    files://CMakeLists.txt \
-    files://main.cpp \
-    files://my-cpp-app.service \
-    files://my-cpp-app.conf \
+    file://CMakeLists.txt \
+    file://*.cpp \
+    file://*.hpp \
+    file://*.c \
+    file://*.h \
+    file://*.service \
+    file://*.conf \
 "
 
 DEPENDS = "systemd"
 
-S = "${WORKDIR}"
-
 inherit cmake pkgconfig systemd
 
-SYSTEMD_SERVICE:${PN} = "my-cpp-app.service"
+SYSTEMD_SERVICE:${PN} = "my-cpp-app.service \"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 do_install:append() {
     # Install binary
     install -d ${D}${bindir}
-    install -m 0755 ${WORKDIR}/build/my-cpp-app ${D}${bindir}/
+    install -m 0755 ${S}/build/my-cpp-app ${D}${bindir}
     
     # Install systemd service file
     install -d ${D}${systemd_system_unitdir}
-    install -m 0644 ${S}/my-cpp-app.service ${D}${systemd_system_unitdir}/
+    install -m 0644 ${S}/my-cpp-app.service ${D}${systemd_system_unitdir}/my-cpp-app.service
     
     # Install configuration file
     install -d ${D}${sysconfdir}/my-cpp-app
@@ -36,11 +37,13 @@ do_install:append() {
 }
 
 FILES:${PN} += " \
-    ${bindir}/my-cpp-app \
-    ${systemd_system_unitdir}/my-cpp-app.service \
-    ${sysconfdir}/my-cpp-app/my-cpp-app.conf \
-    ${localstatedir}/log/my-cpp-app \
+    ${bindir} \
+    ${systemd_system_unitdir} \
+    ${sysconfdir} \
+    ${localstatedir} \
 "
 
 # Dependencies for the application
-RDEPENDS:${PN} += "systemd"
+RDEPENDS:${PN} += " \
+systemd \
+"
