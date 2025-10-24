@@ -10,12 +10,15 @@ SRC_URI = " \
 
 S = "${WORKDIR}"
 
-DEPENDS = "systemd"
+DEPENDS = "systemd pkgconfig-native" 
 
 inherit cmake systemd
 
 SYSTEMD_SERVICE:${PN} = "my-cpp-app.service"
 SYSTEMD_AUTO_ENABLE = "enable"
+
+do_compile[nostamp] = "1"
+do_install[nostamp] = "1"
 
 do_install:append() {
     # Install systemd service file (CMake handles the binary installation)
