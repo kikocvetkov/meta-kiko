@@ -3,18 +3,12 @@ DESCRIPTION = "A custom C++ application built with CMake and systemd integration
 LICENSE = "CLOSED"
 
 SRC_URI = " \
-    file://CMakeLists.txt \
-    file://*.cpp \
-    file://*.hpp \
-    file://*.c \
-    file://*.h \
-    file://*.service \
-    file://*.conf \
+    file://files/ \
 "
 
 DEPENDS = "systemd"
 
-S="${WORKDIR}"
+S="${WORKDIR}/files"
 
 inherit cmake pkgconfig systemd
 
