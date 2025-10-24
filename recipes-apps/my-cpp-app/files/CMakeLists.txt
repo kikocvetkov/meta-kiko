@@ -13,10 +13,10 @@ pkg_check_modules(SYSTEMD REQUIRED libsystemd)
 add_executable(my-cpp-app main.cpp)
 
 # Include directories
-include_directories(${SYSTEMD_INCLUDE_DIRS})
+target_include_directories(my-cpp-app PRIVATE ${SYSTEMD_INCLUDE_DIRS})
 
 # Link libraries
 target_link_libraries(my-cpp-app ${SYSTEMD_LIBRARIES})
 
 # Install target
-install(TARGETS my-cpp-app DESTINATION bin)
+install(TARGETS my-cpp-app DESTINATION ${CMAKE_INSTALL_BINDIR})
