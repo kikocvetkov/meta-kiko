@@ -3,7 +3,7 @@ DESCRIPTION = "A custom C++ application built with CMake and systemd integration
 LICENSE = "CLOSED"
 
 SRC_URI = " \
-    file://files/ \
+    file://* \
 "
 
 DEPENDS = "systemd"
