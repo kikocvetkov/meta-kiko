@@ -11,7 +11,7 @@ SRC_URI = " \
 
 S = "${WORKDIR}"
 
-DEPENDS = "systemd pkgconfig-native libgpiod rasp-gpio" 
+DEPENDS = "systemd pkgconfig-native libgpiod rpi-gpio raspi-gpio" 
 
 
 inherit cmake systemd
