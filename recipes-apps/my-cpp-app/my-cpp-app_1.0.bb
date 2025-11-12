@@ -1,4 +1,4 @@
-UMMARY = "My C++ Application for Raspberry Pi"
+SUMMARY = "My C++ Application for Raspberry Pi"
 DESCRIPTION = "A custom C++ application built with CMake and systemd integration"
 LICENSE = "CLOSED"
 
