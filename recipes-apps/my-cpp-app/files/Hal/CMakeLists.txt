@@ -1,6 +1,6 @@
-SET(HAL_SRC DigitalPin.cpp)
-
-SET(HAL_HDR DigitalPin.hpp)
+SET(HAL_SRC
+    DigitalOutputPin.cpp
+ )
 
 add_library(hal_library STATIC ${HAL_SRC})
 
