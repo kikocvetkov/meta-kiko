@@ -13,14 +13,9 @@ add_subdirectory("Hal")
 # Add executable
 add_executable(my-cpp-app main.cpp)
 
-# Include directories
-<<<<<<< Updated upstream
-include_directories(${SYSTEMD_INCLUDE_DIRS})
-=======
 target_include_directories(my-cpp-app PRIVATE
  ${SYSTEMD_INCLUDE_DIRS}
  )
->>>>>>> Stashed changes
 
 # Link libraries
 target_link_libraries(my-cpp-app
