@@ -4,7 +4,6 @@ SET(HAL_HDR DigitalPin.hpp)
 
 add_library(hal_library STATIC ${HAL_SRC})
 
-find_package(PkgConfig REQUIRED)
 pkg_check_modules(GPIOD REQUIRED libgpiod)
 
 target_include_directories(hal_library PUBLIC
