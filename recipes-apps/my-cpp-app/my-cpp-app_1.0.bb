@@ -1,16 +1,19 @@
-UMMARY = "My C++ Application for Raspberry Pi"
+SUMMARY = "My C++ Application for Raspberry Pi"
 DESCRIPTION = "A custom C++ application built with CMake and systemd integration"
 LICENSE = "CLOSED"
 
 SRC_URI = " \
     file://CMakeLists.txt \
     file://main.cpp \
+    file://Hal/ \
     file://my-cpp-app.service \
+    file://Objects.hpp \
 "
 
 S = "${WORKDIR}"
 
-DEPENDS = "systemd pkgconfig-native" 
+DEPENDS = "systemd pkgconfig-native libgpiod rpi-gpio raspi-gpio" 
+
 
 inherit cmake systemd
 

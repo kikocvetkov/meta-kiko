@@ -1,14 +1,18 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include "Objects.hpp"
 
-// Sleep for seconds
+using namespace Application;
 
 int main()
 {
     while(true)
     {
-        std::cout << "\n Hello World";
-        std::this_thread::sleep_for(std::chrono::seconds(2));
+        _testPin.SetOutput(Hal::OutputLevel::High);
+        std::this_thread::sleep_for(std::chrono::seconds(10));
+
+        _testPin.SetOutput(Hal::OutputLevel::Low);
+        std::this_thread::sleep_for(std::chrono::seconds(10));
     }
 }
