@@ -25,4 +25,4 @@ target_link_libraries(my-cpp-app
  )
 
 # Install target
-install(TARGETS my-cpp-app DESTINATION bin)
+install(TARGETS my-cpp-app DESTINATION ${CMAKE_INSTALL_BINDIR})
