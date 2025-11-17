@@ -14,5 +14,6 @@ target_include_directories(hal_library PUBLIC
 link_directories(${GPIOD_LIBRARY_DIRS})
 
 target_link_libraries(hal_library
-${GPIOD_LIBRARIES}
+    gpiodcxx
+    gpiod
 )

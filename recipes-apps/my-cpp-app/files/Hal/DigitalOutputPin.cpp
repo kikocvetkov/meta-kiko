@@ -1,4 +1,5 @@
 #include "DigitalOutputPin.hpp"
+#include <iostream>
 
 namespace Hal
 {
@@ -13,10 +14,12 @@ namespace Hal
     {
         if(outputLevel == OutputLevel::Low)
         {
+            std::cout << "Output Low\n";
             _pin.set_value(0);
         }
         else
         {
+            std::cout << "Output High\n";
             _pin.set_value(1);
         }
     }
