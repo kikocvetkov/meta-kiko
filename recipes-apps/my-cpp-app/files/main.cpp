@@ -3,22 +3,11 @@
 #include <thread>
 #include "Objects.hpp"
 
-using namespace Application;
-
 int main()
 {
     while(true)
     {
-        _testOutputPin.SetOutput(Hal::OutputLevel::High);
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-
-        _testInputPin.ReadLevel();
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-
-        _testOutputPin.SetOutput(Hal::OutputLevel::Low);
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        
-        _testInputPin.ReadLevel();
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "Main\n";
+        Os::Delay(2000);
     }
 }
