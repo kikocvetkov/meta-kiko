@@ -1,5 +1,6 @@
 SET(HAL_SRC
     DigitalOutputPin.cpp
+    DigitalInputPin.cpp
  )
 
 add_library(hal_library STATIC ${HAL_SRC})
