@@ -7,21 +7,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find required packages
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(SYSTEMD REQUIRED libsystemd)
+
 
 add_subdirectory("Hal")
+add_subdirectory("Os")
 
 # Add executable
 add_executable(my-cpp-app main.cpp)
 
-target_include_directories(my-cpp-app PRIVATE
- ${SYSTEMD_INCLUDE_DIRS}
- )
-
 # Link libraries
 target_link_libraries(my-cpp-app
- ${SYSTEMD_LIBRARIES}
  hal_library
+ os_library
  )
 
 # Install target
