@@ -1,5 +1,5 @@
 #pragma once
-#include "Os/Thread.hpp"
+#include "../Os/Thread.hpp"
 
 namespace Tasks
 {

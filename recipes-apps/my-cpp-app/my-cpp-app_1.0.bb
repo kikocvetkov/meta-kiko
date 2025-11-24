@@ -9,6 +9,7 @@ SRC_URI = " \
     file://my-cpp-app.service \
     file://Objects.hpp \
     file://Os/  \
+    file://Tasks/ \
 "
 
 S = "${WORKDIR}"

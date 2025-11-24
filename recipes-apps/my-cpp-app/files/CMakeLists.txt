@@ -17,9 +17,6 @@ add_executable(my-cpp-app
  Tasks/BleTask.cpp
  )
 
- target_include_directories(my-cpp-app
- Tasks/)
-
 # Link libraries
 target_link_libraries(my-cpp-app
  hal_library

@@ -3,13 +3,12 @@
 
 namespace Tasks
 {
-    void Tasks::BleTask::Run()
+    void BleTask::Run()
     {
         while (true)
         {
             std::cout << "Ble Task\n";
             Os::Delay(2000);
         }
-        
     }
 }

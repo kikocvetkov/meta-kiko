@@ -10,7 +10,9 @@ namespace Os
 
      void Thread::ThreadBegin()
      {
-        Thread::Run();
+        _thread = std::thread([this]() {
+            this->Run();
+        });
      }
 
      void Delay(std::size_t milliseconds)
