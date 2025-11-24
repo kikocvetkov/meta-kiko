@@ -8,12 +8,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find required packages
 find_package(PkgConfig REQUIRED)
 
-
 add_subdirectory("Hal")
 add_subdirectory("Os")
 
 # Add executable
-add_executable(my-cpp-app main.cpp)
+add_executable(my-cpp-app
+ main.cpp
+ Tasks/BleTask.cpp
+ )
+
+ target_include_directories(my-cpp-app
+ Tasks/)
 
 # Link libraries
 target_link_libraries(my-cpp-app

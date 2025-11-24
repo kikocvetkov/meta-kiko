@@ -4,6 +4,8 @@
 
 namespace Os
 {
+    void Delay(std::size_t milliseconds);
+
     class Thread
     {
     public:

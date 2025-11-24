@@ -12,4 +12,9 @@ namespace Os
      {
         Thread::Run();
      }
+
+     void Delay(std::size_t milliseconds)
+     {
+        std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
+     }
 }

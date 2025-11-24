@@ -3,8 +3,6 @@
 #include <thread>
 #include "Objects.hpp"
 
-using namespace Application;
-
 int main()
 {
     while(true)
