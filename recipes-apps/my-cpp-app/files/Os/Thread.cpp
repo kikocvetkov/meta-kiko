@@ -3,16 +3,8 @@
 namespace Os
 {
     Thread::Thread() :
-     _thread{&Thread::ThreadBegin, this}
+     _thread([this](std::stop_token stopToken) { this->Run(stopToken); })
      {
-        _thread.detach();
-     }
-
-     void Thread::ThreadBegin()
-     {
-        _thread = std::thread([this]() {
-            this->Run();
-        });
      }
 
      void Delay(std::size_t milliseconds)
