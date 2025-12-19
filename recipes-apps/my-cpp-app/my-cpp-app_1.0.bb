@@ -10,6 +10,7 @@ SRC_URI = " \
     file://Objects.hpp \
     file://Os/  \
     file://Tasks/ \
+    file://Drivers/ \
 "
 
 S = "${WORKDIR}"

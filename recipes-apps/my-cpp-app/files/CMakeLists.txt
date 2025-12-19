@@ -10,6 +10,7 @@ find_package(PkgConfig REQUIRED)
 
 add_subdirectory("Hal")
 add_subdirectory("Os")
+add_subdirectory("Drivers/Wireless/WiFi")
 
 # Add executable
 add_executable(my-cpp-app
@@ -21,6 +22,7 @@ add_executable(my-cpp-app
 target_link_libraries(my-cpp-app
  hal_library
  os_library
+ wifi_library
  )
 
 # Install target
