@@ -14,6 +14,6 @@ namespace Tasks
         BleTask& operator=(const BleTask&) noexcept = delete;
         BleTask& operator=(BleTask&&) noexcept = delete;
 
-        void Run() override;
+        void Run(std::stop_token stopToken) override;
     };
 }

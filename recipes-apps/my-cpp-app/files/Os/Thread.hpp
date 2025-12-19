@@ -12,12 +12,17 @@ namespace Os
         Thread();
         ~Thread() = default;
 
-        virtual void Run() = 0;
+
+        Thread(const Thread&) = delete;
+        Thread(Thread&&) = delete;
+        Thread& operator=(const Thread&) noexcept = delete;
+        Thread& operator=(Thread&&) noexcept = delete;
+
+        virtual void Run(std::stop_token stopToken) = 0;
 
     private:
-        void ThreadBegin();
 
-        std::thread _thread;
+        std::jthread _thread;
         bool run;
     };
 }

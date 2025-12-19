@@ -3,9 +3,9 @@
 
 namespace Tasks
 {
-    void BleTask::Run()
+    void BleTask::Run(std::stop_token stopToken)
     {
-        while (true)
+        while (!stopToken.stop_requested())
         {
             std::cout << "Ble Task\n";
             Os::Delay(2000);
