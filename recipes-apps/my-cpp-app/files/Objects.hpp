@@ -3,11 +3,14 @@
 #include "Hal/DigitalOutputPin.hpp"
 #include "Hal/DigitalInputPin.hpp"
 #include "Tasks/BleTask.hpp"
+#include "Drivers/Wireless/WiFi/Wifi.hpp"
 
 namespace Objects
 {
-    Hal::DigitalOutputPin _testOutputPin{17, Hal::OutputLevel::Low};
-    Hal::DigitalInputPin _testInputPin{27};
+    Hal::DigitalOutputPin testOutputPin{17, Hal::OutputLevel::Low};
+    Hal::DigitalInputPin testInputPin{27};
 
-    Tasks::BleTask _bleTask;
+    Drivers::Wireless::Wifi::Wifi wifi;
+
+    Tasks::BleTask bleTask;
 }

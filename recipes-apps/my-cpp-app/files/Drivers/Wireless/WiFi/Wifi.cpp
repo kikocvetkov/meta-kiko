@@ -6,8 +6,9 @@ namespace Drivers::Wireless::Wifi
   constexpr std::string_view interfaceName = "fi.w1.wpa_supplicant1.Interface";
   constexpr std::string_view wlan0PathStr = "/fi/w1/wpa_supplicant1/Interfaces/0";
 
-  Wifi::Wifi(WifiEventCallback WifiCallback) : _WifiCallback{WifiCallback},
-                                               _wifiState{WifiState::None}
+  Wifi::Wifi() :
+  _wifiCallback{nullptr},
+  _wifiState{WifiState::None}
   {
     _connection = sdbus::createSystemBusConnection();
     _interfaceProxy = sdbus::createProxy(*_connection, serviceName_.data(), wlan0PathStr.data());
@@ -20,6 +21,11 @@ namespace Drivers::Wireless::Wifi
               { this->onPropertiesChanged(interface, changed, invalidated); });
 
     _connection->enterEventLoopAsync();
+  }
+
+  void Wifi::RegisterWifiCallback(WifiEventCallback wifiCallback)
+  {
+    _wifiCallback = std::move(wifiCallback);
   }
 
   std::optional<WifiError> Wifi::ConnectToWifiAp(std::string_view ssid, std::string_view password)
@@ -76,7 +82,7 @@ namespace Drivers::Wireless::Wifi
                                  const std::vector<std::string> &invalidatedProps)
   {
     auto it = changedParameter.find("State");
-    if (it != changedParameter.end() && _WifiCallback)
+    if (it != changedParameter.end())
     {
       std::string state = it->second;
 
@@ -98,7 +104,7 @@ namespace Drivers::Wireless::Wifi
         _wifiState = WifiState::Authenticating;
       }
 
-      _WifiCallback(_wifiState);
+      _wifiCallback(_wifiState);
     }
   }
 

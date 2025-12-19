@@ -23,12 +23,13 @@ namespace Drivers::Wireless::Wifi
         Connected,
         Failed
     };
+    
+    using WifiEventCallback = std::function<void(WifiState)>;
 
     class Wifi
     {
-        using WifiEventCallback = std::function<void(WifiState)>;
     public:
-        Wifi(WifiEventCallback WifiCallback);
+        Wifi();
         ~Wifi() = default;
 
         Wifi(const Wifi &) = delete;
@@ -36,6 +37,7 @@ namespace Drivers::Wireless::Wifi
         Wifi &operator=(const Wifi &) noexcept = delete;
         Wifi &operator=(Wifi &&) noexcept = delete;
 
+        void RegisterWifiCallback(WifiEventCallback wifiCallback);
         std::optional<WifiError> ConnectToWifiAp(std::string_view ssid, std::string_view password);
         WifiState GetWifiState();
 
@@ -46,7 +48,7 @@ namespace Drivers::Wireless::Wifi
 
         std::unique_ptr<sdbus::IConnection> _connection;
         std::unique_ptr<sdbus::IProxy> _interfaceProxy;
-        WifiEventCallback& _WifiCallback;
+        WifiEventCallback _wifiCallback;
         WifiState _wifiState;
     };
 }
